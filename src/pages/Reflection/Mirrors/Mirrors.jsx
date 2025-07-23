@@ -1,9 +1,13 @@
 import Header from "../../../components/Header";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Mirrors = () => {
   const mirrorSize = 22;
-  const rectangleSize = { x: 800, y: 400 + mirrorSize };
+  const getRectangleWidth = () => Math.min(800, window.innerWidth - 40);
+  const [rectangleSize, setRectangleSize] = useState(() => ({
+    x: getRectangleWidth(),
+    y: 400 + mirrorSize,
+  }));
   const mirrorCentre = { x: rectangleSize.x / 2, y: mirrorSize };
   const arcDistance1 = 45;
   const arcDistance2 = 85;
@@ -17,20 +21,35 @@ const Mirrors = () => {
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef(null);
 
-  const handleMouseDown = () => {
+  useEffect(() => {
+    const handleResize = () => {
+      setRectangleSize({ x: getRectangleWidth(), y: 400 + mirrorSize });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setPosition({
+      x: rectangleSize.x / 4,
+      y: mirrorSize + (rectangleSize.y - mirrorSize) / 2,
+    });
+  }, [rectangleSize.x, rectangleSize.y]);
+
+  const handleStart = () => {
     setDragging(true);
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     setDragging(false);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMove = (clientX, clientY) => {
     if (!dragging || !containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     const newAngleRad = Math.atan(
       (mirrorCentre.x - x) / (y - mirrorCentre.y)
@@ -47,6 +66,23 @@ const Mirrors = () => {
       newAngleDeg >= 0
     ) {
       setPosition({ x, y });
+    }
+  };
+
+  const handleMouseDown = () => handleStart();
+  const handleMouseUp = () => handleEnd();
+  const handleMouseMove = (e) => handleMove(e.clientX, e.clientY);
+
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    handleStart();
+  };
+  const handleTouchEnd = () => handleEnd();
+  const handleTouchMove = (e) => {
+    if (e.touches.length > 0) {
+      const t = e.touches[0];
+      handleMove(t.clientX, t.clientY);
+      e.preventDefault();
     }
   };
 
@@ -133,6 +169,8 @@ const Mirrors = () => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             style={{
               width: `${rectangleSize.x}px`,
               height: `${rectangleSize.y}px`,
@@ -141,6 +179,8 @@ const Mirrors = () => {
               userSelect: "none",
               position: "relative",
               overflow: "hidden",
+              maxWidth: "100%",
+              touchAction: "none",
             }}
           >
             <div
@@ -239,6 +279,7 @@ const Mirrors = () => {
             </svg>
             <div
               onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
               style={{
                 width: circleSize.width,
                 height: circleSize.height,
