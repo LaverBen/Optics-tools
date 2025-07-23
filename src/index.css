@@ -103,11 +103,11 @@ button:focus-visible {
 }
 
 .nav-summary::after {
-  content: "\25BE"; /* downward triangle */
-  font-size: 0.6rem;
+  content: "\25B6"; /* downward triangle */
+  font-size: 0.8rem;
   margin-top: 0.125rem;
 }
 
 details[open] > summary.nav-summary::after {
-  content: "\25B4"; /* upward triangle */
+  content: "\25BC"; /* upward triangle */
 }
