@@ -1,6 +1,6 @@
 import Header from "../../../components/Header";
 
-function Convex_mirrors() {
+function ConvexMirrors() {
   return (
     <div>
       <Header title="Convex mirrors" />
@@ -11,4 +11,4 @@ function Convex_mirrors() {
   );
 }
 
-export default Convex_mirrors;
+export default ConvexMirrors;

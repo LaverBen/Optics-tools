@@ -1,6 +1,6 @@
 import Header from "../../../components/Header";
 
-function Concave_mirrors() {
+function ConcaveMirrors() {
   return (
     <div>
       <Header title="Concave mirrors" />
@@ -11,4 +11,4 @@ function Concave_mirrors() {
   );
 }
 
-export default Concave_mirrors;
+export default ConcaveMirrors;

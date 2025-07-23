@@ -26,10 +26,10 @@ function Header({ title }) {
             <option value="/about">→ About</option>
             <option value="/reflection">→ Reflection</option>
             <option value="/reflection/mirrors">→ → Mirrors</option>
-            <option value="/reflection/mirrors/concave_mirrors">
+            <option value="/reflection/mirrors/concave-mirrors">
               → → → Concave Mirrors
             </option>
-            <option value="/reflection/mirrors/convex_mirrors">
+            <option value="/reflection/mirrors/convex-mirrors">
               → → → Convex Mirrors
             </option>
           </select>
