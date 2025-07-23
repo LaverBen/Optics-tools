@@ -25,7 +25,7 @@ function NavList({ items, level = 0, location }) {
         <li key={item.path || item.label} style={{ padding: 0 }}>
           {item.children ? (
             <details style={{ margin: "0.25rem 0" }}>
-              <summary style={{ cursor: "pointer", listStyle: "none" }}>
+            <summary style={{ cursor: "pointer" }}>
                 <NavLink to={item.path} label={item.label} location={location} />
               </summary>
               <NavList items={item.children} level={level + 1} location={location} />
@@ -97,7 +97,7 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
                 padding: "0.5rem",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 zIndex: 1,
-                maxWidth: "30rem",
+                width: "30rem",
               }}
             >
               <NavList items={navItems} location={location} />
