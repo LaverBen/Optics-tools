@@ -32,14 +32,19 @@ const Mirrors = () => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
+    const newAngleRad = Math.atan(
+      (mirrorCentre.x - x) / (y - mirrorCentre.y)
+    );
+    const newAngleDeg = (newAngleRad * 180) / Math.PI;
+
     // Restrict movement to the left half
     if (
       x < mirrorCentre.x &&
       x >= 0 &&
       y >= mirrorCentre.y &&
       y <= rect.height &&
-      angleOfIncidenceDegrees <= 90 &&
-      angleOfIncidenceDegrees >= 0
+      newAngleDeg <= 90 &&
+      newAngleDeg >= 0
     ) {
       setPosition({ x, y });
     }
