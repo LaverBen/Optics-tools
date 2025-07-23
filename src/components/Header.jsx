@@ -77,6 +77,7 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
           paddingTop: "1rem",
           paddingBottom: "0.5rem",
           borderBottom: "1px solid #ccc",
+          zIndex: 10,
         }}
       >
         <div
