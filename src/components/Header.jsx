@@ -8,6 +8,9 @@ function NavLink({ to, label, location }) {
         textDecoration: location.pathname === to ? "underline" : "none",
         fontWeight: location.pathname === to ? "bold" : "normal",
         color: "black",
+        display: "block",
+        whiteSpace: "normal",
+        wordBreak: "break-word",
       }}
     >
       {label}
@@ -21,8 +24,8 @@ function NavList({ items, level = 0, location }) {
       {items.map((item) => (
         <li key={item.path || item.label}>
           {item.children ? (
-            <details>
-              <summary style={{ cursor: "pointer" }}>
+            <details style={{ margin: "0.25rem 0" }}>
+              <summary style={{ cursor: "pointer", listStyle: "none" }}>
                 <NavLink to={item.path} label={item.label} location={location} />
               </summary>
               <NavList items={item.children} level={level + 1} location={location} />
@@ -41,6 +44,10 @@ function Header({ title }) {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
+    {
+      path: "/long-page-name",
+      label: "Long page name to test if long page names wrap",
+    },
     {
       path: "/reflection",
       label: "Reflection",
@@ -82,9 +89,22 @@ function Header({ title }) {
             top: "0.5rem",
           }}
         >
-          <details>
+          <details style={{ position: "relative" }}>
             <summary style={{ cursor: "pointer" }}>Navigate</summary>
-            <NavList items={navItems} location={location} />
+            <div
+              style={{
+                position: "absolute",
+                top: "100%",
+                left: 0,
+                backgroundColor: "#fff",
+                padding: "0.5rem",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                zIndex: 1,
+                maxWidth: "15rem",
+              }}
+            >
+              <NavList items={navItems} location={location} />
+            </div>
           </details>
         </div>
         <div
