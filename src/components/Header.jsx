@@ -1,9 +1,23 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function Header({ title }) {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navItems = [
+    { path: "/", label: "Home", level: 0 },
+    { path: "/about", label: "About", level: 0 },
+    { path: "/reflection", label: "Reflection", level: 0 },
+    { path: "/reflection/mirrors", label: "Mirrors", level: 1 },
+    {
+      path: "/reflection/mirrors/concave-mirrors",
+      label: "Concave Mirrors",
+      level: 2,
+    },
+    {
+      path: "/reflection/mirrors/convex-mirrors",
+      label: "Convex Mirrors",
+      level: 2,
+    },
+  ];
 
   return (
     <div>
@@ -17,24 +31,6 @@ function Header({ title }) {
           borderBottom: "1px solid #ccc",
         }}
       >
-        <div style={{ position: "absolute", left: "1rem", top: "0.5rem" }}>
-          <select
-            value={location.pathname}
-            onChange={(e) => navigate(e.target.value)}
-          >
-            <option value="/">→ Home</option>
-            <option value="/about">→ About</option>
-            <option value="/reflection">→ Reflection</option>
-            <option value="/reflection/mirrors">→ → Mirrors</option>
-            <option value="/reflection/mirrors/concave-mirrors">
-              → → → Concave Mirrors
-            </option>
-            <option value="/reflection/mirrors/convex-mirrors">
-              → → → Convex Mirrors
-            </option>
-          </select>
-        </div>
-
         <div
           style={{
             textAlign: "center",
@@ -44,6 +40,26 @@ function Header({ title }) {
         >
           {title}
         </div>
+        <nav style={{ marginTop: "0.5rem" }}>
+          <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+            {navItems.map((item) => (
+              <li key={item.path} style={{ marginLeft: `${item.level}rem` }}>
+                <Link
+                  to={item.path}
+                  style={{
+                    textDecoration:
+                      location.pathname === item.path ? "underline" : "none",
+                    fontWeight:
+                      location.pathname === item.path ? "bold" : "normal",
+                    color: "black",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       <div>
         <Outlet />
