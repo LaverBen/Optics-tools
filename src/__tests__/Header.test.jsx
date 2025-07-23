@@ -14,9 +14,16 @@ describe('Header', () => {
   });
 
   it('wraps long page names when navigation is open', async () => {
+    const navItems = [
+      { path: '/', label: 'Home' },
+      {
+        path: '/long-page-name',
+        label: 'Long page name to test if long page names wrap',
+      },
+    ];
     render(
       <BrowserRouter>
-        <Header title="Test" />
+        <Header title="Test" navItems={navItems} />
       </BrowserRouter>
     );
     await userEvent.click(screen.getByText(/navigate/i));

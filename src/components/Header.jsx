@@ -20,9 +20,9 @@ function NavLink({ to, label, location }) {
 
 function NavList({ items, level = 0, location }) {
   return (
-    <ul style={{ listStyle: "none", margin: 0, paddingLeft: `${level}rem` }}>
+    <ul className="nav-menu" style={{ margin: 0, paddingLeft: `${level}rem` }}>
       {items.map((item) => (
-        <li key={item.path || item.label}>
+        <li key={item.path || item.label} style={{ padding: 0 }}>
           {item.children ? (
             <details style={{ margin: "0.25rem 0" }}>
               <summary style={{ cursor: "pointer", listStyle: "none" }}>
@@ -39,36 +39,33 @@ function NavList({ items, level = 0, location }) {
   );
 }
 
-function Header({ title }) {
+const DEFAULT_NAV_ITEMS = [
+  { path: "/", label: "Home" },
+  { path: "/about", label: "About" },
+  {
+    path: "/reflection",
+    label: "Reflection",
+    children: [
+      {
+        path: "/reflection/mirrors",
+        label: "Mirrors",
+        children: [
+          {
+            path: "/reflection/mirrors/concave-mirrors",
+            label: "Concave Mirrors",
+          },
+          {
+            path: "/reflection/mirrors/convex-mirrors",
+            label: "Convex Mirrors",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
   const location = useLocation();
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    {
-      path: "/long-page-name",
-      label: "Long page name to test if long page names wrap",
-    },
-    {
-      path: "/reflection",
-      label: "Reflection",
-      children: [
-        {
-          path: "/reflection/mirrors",
-          label: "Mirrors",
-          children: [
-            {
-              path: "/reflection/mirrors/concave-mirrors",
-              label: "Concave Mirrors",
-            },
-            {
-              path: "/reflection/mirrors/convex-mirrors",
-              label: "Convex Mirrors",
-            },
-          ],
-        },
-      ],
-    },
-  ];
 
   return (
     <div>
@@ -100,7 +97,7 @@ function Header({ title }) {
                 padding: "0.5rem",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 zIndex: 1,
-                maxWidth: "15rem",
+                maxWidth: "30rem",
               }}
             >
               <NavList items={navItems} location={location} />
