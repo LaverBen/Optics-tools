@@ -89,3 +89,25 @@ button:focus-visible {
 .nav-menu a:hover {
   background-color: #eaeaea;
 }
+
+.nav-summary {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.nav-summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-summary::after {
+  content: "\25B6"; /* downward triangle */
+  font-size: 0.8rem;
+  margin-top: 0.125rem;
+}
+
+details[open] > summary.nav-summary::after {
+  content: "\25BC"; /* upward triangle */
+}
