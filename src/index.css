@@ -6,6 +6,8 @@
   color-scheme: light dark;
   --color-text: rgba(255, 255, 255, 0.87);
   --color-background: #242424;
+  --color-overview: #ffffcc;
+  --color-overview-hover: #ff0000;
   --color-link: #646cff;
   --color-link-hover: #535bf2;
   --color-button-bg: #1a1a1a;
@@ -161,4 +163,17 @@ details[open] > summary.nav-summary::before {
   font-weight: bold;
   text-decoration: none;
   border-radius: 4px;
+
+.overview {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-overview);
+  transition: border-color 0.25s;
+}
+.overview:hover {
+  border-color: var(--color-overview-hover);
 }
