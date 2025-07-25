@@ -16,6 +16,7 @@
   --color-nav-bg: #444;
   --color-nav-link: #fff;
   --color-nav-hover: #555;
+  --color-brick-hover: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -154,7 +155,6 @@ details[open] > summary.nav-summary::before {
   gap: 1rem;
   padding: 1rem;
 }
-
 .brick {
   display: flex;
   align-items: center;
@@ -163,6 +163,12 @@ details[open] > summary.nav-summary::before {
   font-weight: bold;
   text-decoration: none;
   border-radius: 4px;
+  border: 1px solid transparent;
+  transition: border-color 0.5s;
+}
+.brick:hover {
+  border-color: var(--color-brick-hover);
+}
 
 .overview {
   border-radius: 8px;
