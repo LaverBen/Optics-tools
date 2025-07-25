@@ -36,12 +36,40 @@ const Mirrors = () => {
     });
   }, [rectangleSize.x, rectangleSize.y]);
 
+  const handleMouseUp = () => handleEnd();
+  const handleMouseMove = (e) => handleMove(e.clientX, e.clientY);
+
+  const handleTouchEnd = () => handleEnd();
+  const handleTouchMove = (e) => {
+    if (e.touches.length > 0) {
+      const t = e.touches[0];
+      handleMove(t.clientX, t.clientY);
+      e.preventDefault();
+    }
+  };
+
+  const addWindowListeners = () => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+  };
+
+  const removeWindowListeners = () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    window.removeEventListener("mouseup", handleMouseUp);
+    window.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("touchend", handleTouchEnd);
+  };
+
   const handleStart = () => {
     setDragging(true);
+    addWindowListeners();
   };
 
   const handleEnd = () => {
     setDragging(false);
+    removeWindowListeners();
   };
 
   const handleMove = (clientX, clientY) => {
@@ -70,20 +98,10 @@ const Mirrors = () => {
   };
 
   const handleMouseDown = () => handleStart();
-  const handleMouseUp = () => handleEnd();
-  const handleMouseMove = (e) => handleMove(e.clientX, e.clientY);
 
   const handleTouchStart = (e) => {
     e.preventDefault();
     handleStart();
-  };
-  const handleTouchEnd = () => handleEnd();
-  const handleTouchMove = (e) => {
-    if (e.touches.length > 0) {
-      const t = e.touches[0];
-      handleMove(t.clientX, t.clientY);
-      e.preventDefault();
-    }
   };
 
   const getArcPath = (position, arcLength, reflection) => {
@@ -184,7 +202,6 @@ const Mirrors = () => {
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             style={{
