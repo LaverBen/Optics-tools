@@ -92,24 +92,24 @@ button:focus-visible {
 
 .nav-summary {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
+  padding: 0;
 }
 
 .nav-summary::-webkit-details-marker {
   display: none;
 }
 
-.nav-summary::after {
-  content: "\25B6"; /* downward triangle */
+.nav-summary::before {
+  content: "\25B6"; /* closed triangle */
   font-size: 0.8rem;
-  margin-top: 0.125rem;
+  margin-right: 0.25rem;
 }
 
-details[open] > summary.nav-summary::after {
-  content: "\25BC"; /* upward triangle */
+details[open] > summary.nav-summary::before {
+  content: "\25BC"; /* open triangle */
 }
 
 .nav-toggle {

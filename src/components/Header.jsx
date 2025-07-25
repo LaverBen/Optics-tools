@@ -25,7 +25,7 @@ function NavItem({ item, level, location }) {
 
   return (
     <li style={{ padding: 0 }}>
-      <div style={{ display: "flex", alignItems: "flex-start", margin: "0.25rem 0" }}>
+      <div style={{ display: "flex", alignItems: "center", margin: "0.25rem 0" }}>
         {hasChildren && (
           <button
             type="button"
