@@ -122,6 +122,11 @@ details[open] > summary.nav-summary::before {
   line-height: 1;
 }
 
+.nav-toggle:focus,
+.nav-toggle:focus-visible {
+  outline: none;
+}
+
 .nav-toggle::before {
   content: "\25B6";
 }
