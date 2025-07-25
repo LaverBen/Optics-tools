@@ -1,4 +1,5 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function NavLink({ to, label, location }) {
   return (
@@ -18,22 +19,35 @@ function NavLink({ to, label, location }) {
   );
 }
 
+function NavItem({ item, level, location }) {
+  const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li style={{ padding: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", margin: "0.25rem 0" }}>
+        {hasChildren && (
+          <button
+            type="button"
+            className={`nav-toggle${open ? " open" : ""}`}
+            aria-label={open ? "Collapse submenu" : "Expand submenu"}
+            onClick={() => setOpen(!open)}
+          />
+        )}
+        <NavLink to={item.path} label={item.label} location={location} />
+      </div>
+      {hasChildren && open && (
+        <NavList items={item.children} level={level + 1} location={location} />
+      )}
+    </li>
+  );
+}
+
 function NavList({ items, level = 0, location }) {
   return (
     <ul className="nav-menu" style={{ margin: 0, paddingLeft: `${level}rem` }}>
       {items.map((item) => (
-        <li key={item.path || item.label} style={{ padding: 0 }}>
-          {item.children ? (
-            <details style={{ margin: "0.25rem 0" }}>
-              <summary className="nav-summary">
-                <NavLink to={item.path} label={item.label} location={location} />
-              </summary>
-              <NavList items={item.children} level={level + 1} location={location} />
-            </details>
-          ) : (
-            <NavLink to={item.path} label={item.label} location={location} />
-          )}
-        </li>
+        <NavItem key={item.path || item.label} item={item} level={level} location={location} />
       ))}
     </ul>
   );
