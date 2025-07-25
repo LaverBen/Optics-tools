@@ -157,6 +157,22 @@ const Mirrors = () => {
   );
   const angleOfIncidenceDegrees = (angleOfIncidenceRadians * 180) / Math.PI;
 
+  const angleTextRadius1 = arcDistance1 + 10;
+  const angleTextX1 =
+    mirrorCentre.x -
+    Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius1;
+  const angleTextY1 =
+    mirrorCentre.y +
+    Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius1;
+
+  const angleTextRadius2 = arcDistance2 + 10;
+  const angleTextX2 =
+    mirrorCentre.x +
+    Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius2;
+  const angleTextY2 =
+    mirrorCentre.y +
+    Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius2;
+
   return (
     <div>
       <Header title="Mirrors" />
@@ -321,6 +337,37 @@ const Mirrors = () => {
                 fill="none"
               />
             </svg>
+            {dragging && (
+              <svg
+                width="100%"
+                height="100%"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  pointerEvents: "none",
+                }}
+              >
+                <text
+                  x={angleTextX1}
+                  y={angleTextY1}
+                  fontSize="14"
+                  textAnchor="middle"
+                  fill="black"
+                >
+                  {angleOfIncidenceDegrees.toFixed(2)}°
+                </text>
+                <text
+                  x={angleTextX2}
+                  y={angleTextY2}
+                  fontSize="14"
+                  textAnchor="middle"
+                  fill="black"
+                >
+                  {angleOfIncidenceDegrees.toFixed(2)}°
+                </text>
+              </svg>
+            )}
           </div>
           <div style={{ paddingLeft: "2rem" }}>
             <p>Angle of incidence: {angleOfIncidenceDegrees.toFixed(2)}°</p>
