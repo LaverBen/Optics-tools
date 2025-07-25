@@ -1,7 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Home from '../pages/Home.jsx';
+import { render, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import Home from '../pages/Home.jsx';
 
 function renderHome() {
   return render(
@@ -12,17 +11,14 @@ function renderHome() {
 }
 
 describe('Home page', () => {
-  it('increments click counter when button clicked', async () => {
-    renderHome();
-    const clickBtn = screen.getAllByText(/click me/i)[0];
-    await userEvent.click(clickBtn);
-    expect(screen.getByText(/you clicked the button 1 times/i)).toBeInTheDocument();
-  });
-
-  it('increments hover counter when hovered', async () => {
-    renderHome();
-    const hoverBtn = screen.getAllByText(/hover over me/i)[0];
-    await userEvent.hover(hoverBtn);
-    expect(screen.getByText(/you hovered over the other button 1 times/i)).toBeInTheDocument();
+  it('renders a link for each page', () => {
+    const { container } = renderHome();
+    const grid = container.querySelector('.brick-grid');
+    const utils = within(grid);
+    expect(utils.getByRole('link', { name: /about/i })).toBeInTheDocument();
+    expect(utils.getByRole('link', { name: /^reflection$/i })).toBeInTheDocument();
+    expect(utils.getByRole('link', { name: /^mirrors$/i })).toBeInTheDocument();
+    expect(utils.getByRole('link', { name: /concave mirrors/i })).toBeInTheDocument();
+    expect(utils.getByRole('link', { name: /convex mirrors/i })).toBeInTheDocument();
   });
 });

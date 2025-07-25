@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
+import NAV_ITEMS from "./navItems";
 
 function NavLink({ to, label, location }) {
   return (
@@ -53,30 +54,7 @@ function NavList({ items, level = 0, location }) {
   );
 }
 
-const DEFAULT_NAV_ITEMS = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  {
-    path: "/reflection",
-    label: "Reflection",
-    children: [
-      {
-        path: "/reflection/mirrors",
-        label: "Mirrors",
-        children: [
-          {
-            path: "/reflection/mirrors/concave-mirrors",
-            label: "Concave Mirrors",
-          },
-          {
-            path: "/reflection/mirrors/convex-mirrors",
-            label: "Convex Mirrors",
-          },
-        ],
-      },
-    ],
-  },
-];
+const DEFAULT_NAV_ITEMS = NAV_ITEMS;
 
 function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
   const location = useLocation();
