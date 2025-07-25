@@ -8,7 +8,7 @@ function NavLink({ to, label, location }) {
       style={{
         textDecoration: location.pathname === to ? "underline" : "none",
         fontWeight: location.pathname === to ? "bold" : "normal",
-        color: "black",
+        color: "var(--color-nav-link)",
         display: "block",
         whiteSpace: "normal",
         wordBreak: "break-word",
@@ -87,10 +87,10 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
         style={{
           position: "relative",
           width: "100vw",
-          backgroundColor: "#f0f0f0ff",
+          backgroundColor: "var(--color-header-bg)",
           paddingTop: "1rem",
           paddingBottom: "0.5rem",
-          borderBottom: "1px solid #ccc",
+          borderBottom: "1px solid var(--color-header-border)",
           zIndex: 10,
         }}
       >
@@ -108,7 +108,7 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
                 position: "absolute",
                 top: "100%",
                 left: 0,
-                backgroundColor: "#fff",
+                backgroundColor: "var(--color-nav-bg)",
                 padding: "0.5rem",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 zIndex: 1,
