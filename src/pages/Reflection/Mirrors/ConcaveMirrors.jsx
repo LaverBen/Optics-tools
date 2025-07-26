@@ -4,7 +4,7 @@ function ConcaveMirrors() {
   return (
     <div>
       <Header title="Concave mirrors" />
-      <div style={{ padding: "2rem" }}>
+      <div className="page_content">
         <h2>Concave mirrors</h2>
       </div>
     </div>

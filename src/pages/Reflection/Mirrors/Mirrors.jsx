@@ -187,7 +187,7 @@ const Mirrors = () => {
   return (
     <div>
       <Header title="Mirrors" />
-      <div style={{ padding: "2rem" }}>
+      <div className="page_content">
         <p>Mirrors are reflecty things.</p>
         <p> Play with the reflecting mirror below!</p>
         <div style={{ display: "flex", alignItems: "flex-start" }}>
