@@ -1,4 +1,5 @@
 import Header from "../../../components/Header";
+import Overview from "../../../components/Overview";
 import Ray from "../../../components/Ray";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -21,6 +22,11 @@ const Mirrors = () => {
   });
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef(null);
+
+  const keyInfo = [
+    "Mirrors are reflecty things.",
+    "Play with the reflecting mirror below!",
+  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -188,9 +194,14 @@ const Mirrors = () => {
     <div>
       <Header title="Mirrors" />
       <div className="page_content">
-        <p>Mirrors are reflecty things.</p>
-        <p> Play with the reflecting mirror below!</p>
-        <div style={{ display: "flex", alignItems: "flex-start" }}>
+        <Overview list={keyInfo} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            paddingTop: "2rem",
+          }}
+        >
           <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
