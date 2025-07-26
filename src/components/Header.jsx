@@ -71,7 +71,7 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
       <div
         style={{
           position: "relative",
-          width: "100vw",
+          width: "100%",
           backgroundColor: "var(--color-header-bg)",
           paddingTop: "1rem",
           paddingBottom: "0.5rem",

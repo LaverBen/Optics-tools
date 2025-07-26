@@ -189,3 +189,21 @@ details[open] > summary.nav-summary::before {
   padding-left: 5rem;
   width: 75%;
 }
+
+@media (max-width: 600px) {
+  .page_content {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  .brick-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .overview {
+    width: 100%;
+  }
+}
