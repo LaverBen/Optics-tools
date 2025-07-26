@@ -1,4 +1,5 @@
 import Header from "../../../components/Header";
+import Ray from "../../../components/Ray";
 import React, { useState, useRef, useEffect } from "react";
 
 const Mirrors = () => {
@@ -79,9 +80,7 @@ const Mirrors = () => {
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    const newAngleRad = Math.atan(
-      (mirrorCentre.x - x) / (y - mirrorCentre.y)
-    );
+    const newAngleRad = Math.atan((mirrorCentre.x - x) / (y - mirrorCentre.y));
     const newAngleDeg = (newAngleRad * 180) / Math.PI;
 
     // Restrict movement to the left half
@@ -142,7 +141,7 @@ const Mirrors = () => {
 
     if (dy === 0)
       return (
-        <line
+        <Ray
           x1={mirrorCentre.x}
           y1={mirrorCentre.y}
           x2={mirrorCentre.x * 2}
@@ -165,9 +164,7 @@ const Mirrors = () => {
       y2 = y1 + (x2 - x1) / slope;
     }
 
-    return (
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="red" strokeWidth="2" />
-    );
+    return <Ray x1={x1} y1={y1} x2={x2} y2={y2} stroke="red" strokeWidth="2" />;
   };
 
   const angleOfIncidenceRadians = Math.atan(
@@ -177,19 +174,15 @@ const Mirrors = () => {
 
   const angleTextRadius1 = arcDistance1 + 10;
   const angleTextX1 =
-    mirrorCentre.x -
-    Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius1;
+    mirrorCentre.x - Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius1;
   const angleTextY1 =
-    mirrorCentre.y +
-    Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius1;
+    mirrorCentre.y + Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius1;
 
   const angleTextRadius2 = arcDistance2 + 10;
   const angleTextX2 =
-    mirrorCentre.x +
-    Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius2;
+    mirrorCentre.x + Math.sin(angleOfIncidenceRadians / 2) * angleTextRadius2;
   const angleTextY2 =
-    mirrorCentre.y +
-    Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius2;
+    mirrorCentre.y + Math.cos(angleOfIncidenceRadians / 2) * angleTextRadius2;
 
   return (
     <div>
@@ -246,11 +239,11 @@ const Mirrors = () => {
                 pointerEvents: "none",
               }}
             >
-              <line
-                x1={mirrorCentre.x}
-                y1={mirrorCentre.y}
-                x2={position.x}
-                y2={position.y}
+              <Ray
+                x2={mirrorCentre.x}
+                y2={mirrorCentre.y}
+                x1={position.x}
+                y1={position.y}
                 stroke="red"
                 strokeWidth="2"
               />
