@@ -30,4 +30,18 @@ describe('Header', () => {
     const link = screen.getByText('Long page name to test if long page names wrap');
     expect(window.getComputedStyle(link).whiteSpace).toBe('normal');
   });
+
+  it('closes navigation when clicking outside', async () => {
+    render(
+      <BrowserRouter>
+        <Header title="Test" />
+      </BrowserRouter>
+    );
+    const summary = screen.getByText(/navigate/i);
+    await userEvent.click(summary);
+    const details = summary.closest('details');
+    expect(details.open).toBe(true);
+    await userEvent.click(document.body);
+    expect(details.open).toBe(false);
+  });
 });
