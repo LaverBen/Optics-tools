@@ -183,3 +183,9 @@ details[open] > summary.nav-summary::before {
 .overview:hover {
   border-color: var(--color-overview-hover);
 }
+
+.page_content {
+  padding-top: 2rem;
+  padding-left: 5rem;
+  width: 75%;
+}

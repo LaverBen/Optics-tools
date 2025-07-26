@@ -4,7 +4,7 @@ function About() {
   return (
     <div>
       <Header title="About" />
-      <div style={{ padding: "2rem" }}>
+      <div className="page_content">
         <p>This is a second page!</p>
       </div>
     </div>

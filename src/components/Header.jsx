@@ -26,7 +26,9 @@ function NavItem({ item, level, location }) {
 
   return (
     <li style={{ padding: 0 }}>
-      <div style={{ display: "flex", alignItems: "center", margin: "0.25rem 0" }}>
+      <div
+        style={{ display: "flex", alignItems: "center", margin: "0.25rem 0" }}
+      >
         {hasChildren && (
           <button
             type="button"
@@ -48,7 +50,12 @@ function NavList({ items, level = 0, location }) {
   return (
     <ul className="nav-menu" style={{ margin: 0, paddingLeft: `${level}rem` }}>
       {items.map((item) => (
-        <NavItem key={item.path || item.label} item={item} level={level} location={location} />
+        <NavItem
+          key={item.path || item.label}
+          item={item}
+          level={level}
+          location={location}
+        />
       ))}
     </ul>
   );
@@ -90,7 +97,7 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
                 padding: "0.5rem",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                 zIndex: 1,
-                width: "30rem",
+                width: "18rem",
               }}
             >
               <NavList items={navItems} location={location} />
