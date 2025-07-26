@@ -109,6 +109,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  user-select: none;
   padding: 0;
 }
 

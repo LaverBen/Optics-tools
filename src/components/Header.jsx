@@ -102,7 +102,9 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
           }}
         >
           <details ref={detailsRef} style={{ position: "relative" }}>
-            <summary className="nav-summary">Navigate</summary>
+            <summary className="nav-summary" style={{ userSelect: "none" }}>
+              Navigate
+            </summary>
             <div
               style={{
                 position: "absolute",

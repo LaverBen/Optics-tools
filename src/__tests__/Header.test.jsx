@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import Header from '../components/Header.jsx';
+import '../index.css';
 
 describe('Header', () => {
   it('renders provided title', () => {
@@ -43,5 +44,15 @@ describe('Header', () => {
     expect(details.open).toBe(true);
     await userEvent.click(document.body);
     expect(details.open).toBe(false);
+  });
+
+  it('summary text is not selectable', () => {
+    render(
+      <BrowserRouter>
+        <Header title="Test" />
+      </BrowserRouter>
+    );
+    const summary = screen.getByText(/navigate/i);
+    expect(window.getComputedStyle(summary).userSelect).toBe('none');
   });
 });
