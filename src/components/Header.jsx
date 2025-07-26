@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import NAV_ITEMS from "./navItems";
 
 function NavLink({ to, label, location }) {
@@ -65,6 +65,21 @@ const DEFAULT_NAV_ITEMS = NAV_ITEMS;
 
 function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
   const location = useLocation();
+  const detailsRef = useRef(null);
+
+  useEffect(() => {
+    function handleClick(event) {
+      if (detailsRef.current && detailsRef.current.open) {
+        if (!detailsRef.current.contains(event.target)) {
+          detailsRef.current.open = false;
+        }
+      }
+    }
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <div>
@@ -86,8 +101,10 @@ function Header({ title, navItems = DEFAULT_NAV_ITEMS }) {
             top: "0.5rem",
           }}
         >
-          <details style={{ position: "relative" }}>
-            <summary className="nav-summary">Navigate</summary>
+          <details ref={detailsRef} style={{ position: "relative" }}>
+            <summary className="nav-summary" style={{ userSelect: "none" }}>
+              Navigate
+            </summary>
             <div
               style={{
                 position: "absolute",
