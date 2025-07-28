@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import Overview from "../../components/Overview";
 import Ray from "../../components/Ray";
 import Vector from "../../components/Vector";
+import Equation from "../../components/Equation";
 
 function Reflection() {
   const keyInfo = [
@@ -220,14 +221,7 @@ function Reflection() {
             <p>
               From this principle we can derive the <b>law of reflection</b>.
             </p>
-            <div
-              style={{
-                backgroundColor: "rgba(236, 185, 75, 0.38)",
-              }}
-            >
-              <p style={{ textAlign: "right" }}>(1)</p>
-              <p style={{ textAlign: "center" }}>θ_i = θ_r</p>
-            </div>
+          <Equation number={1}>{"\\theta_i = \\theta_r"}</Equation>
           </div>
           <div
             style={{
