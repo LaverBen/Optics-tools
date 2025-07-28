@@ -7,13 +7,16 @@ function Equation({ children, number, id }) {
       id={id}
       style={{
         backgroundColor: 'rgba(236, 185, 75, 0.38)',
-        display: 'flex',
-        justifyContent: 'center',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
         alignItems: 'center',
+        width: '100%',
       }}
     >
-      <BlockMath>{children}</BlockMath>
-      {number && <span style={{ marginLeft: '0.5rem' }}>({number})</span>}
+      <BlockMath style={{ justifySelf: 'center' }}>{children}</BlockMath>
+      {number && (
+        <span style={{ marginLeft: '0.5rem', justifySelf: 'end' }}>({number})</span>
+      )}
     </div>
   );
 }

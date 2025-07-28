@@ -220,10 +220,11 @@ function Reflection() {
               direction). All other components of the light ray remain the same.
             </p>
             <p>
-              From this principle we can derive the <b>law of reflection</b>{" "}
-              <EquationReference id="eq-law-reflection" number={1} />.
+              From this principle we can derive the <b>law of reflection</b>
+              {" ("}
+              <EquationReference id="eq-law-reflection" number={1} />{")"}.
             </p>
-          <Equation id="eq-law-reflection" number={1}>{"\\theta_i = \\theta_r"}</Equation>
+            <Equation id="eq-law-reflection" number={1}>{"\\theta_i = \\theta_r"}</Equation>
           </div>
           <div
             style={{
