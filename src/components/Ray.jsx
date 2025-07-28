@@ -14,8 +14,19 @@ function Ray({ x1, y1, x2, y2, stroke = "black", strokeWidth = 1, ...rest }) {
 
   return (
     <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={stroke} strokeWidth={strokeWidth} {...rest} />
-      <polygon points={`${mx},${my} ${ax1},${ay1} ${ax2},${ay2}`} fill={stroke} />
+      <line
+        x1={x1}
+        y1={y1}
+        x2={x2}
+        y2={y2}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        {...rest}
+      />
+      <polygon
+        points={`${mx},${my} ${ax1},${ay1} ${ax2},${ay2}`}
+        fill={stroke}
+      />
     </g>
   );
 }
