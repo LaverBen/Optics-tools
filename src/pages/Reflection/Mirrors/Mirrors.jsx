@@ -23,10 +23,7 @@ const Mirrors = () => {
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef(null);
 
-  const keyInfo = [
-    "Mirrors are reflecty things.",
-    "Play with the reflecting mirror below!",
-  ];
+  const keyInfo = ["Play with the reflecting mirror below!"];
 
   useEffect(() => {
     const handleResize = () => {
