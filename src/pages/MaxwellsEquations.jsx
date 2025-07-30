@@ -33,7 +33,8 @@ function MaxwellsEquations() {
               backgroundColor: "rgba(255, 255, 255, 0.5)",
               border: "1px solid black",
               justifyContent: "center",
-              alignContent: "center",
+              display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
             }}
@@ -42,7 +43,9 @@ function MaxwellsEquations() {
               Gauss's Law for Electric Field
             </h2>
             <Equation id="equation1" number={1}>
-              {"\\theta_i = \\theta_r"}
+              {
+                "\\oint \\vec{\\mathrm{E}} \\cdot \\mathrm{d} \\vec{\\mathrm{A}} \\mathrm{=} \\frac{\\mathrm{Q}_\\mathrm{encl}}{\\mathrm{\\epsilon}_\\mathrm{0}}"
+              }
             </Equation>
           </div>
           <div
@@ -50,7 +53,8 @@ function MaxwellsEquations() {
               backgroundColor: "rgba(200, 200, 200, 0.5)",
               border: "1px solid black",
               justifyContent: "center",
-              alignContent: "center",
+              display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
             }}
@@ -59,7 +63,9 @@ function MaxwellsEquations() {
               Gauss's Law for Magnetic Field
             </h2>
             <Equation id="equation2" number={2}>
-              {"\\theta_i = \\theta_r"}
+              {
+                "\\oint \\vec{\\mathrm{B}} \\cdot \\mathrm{d} \\vec{\\mathrm{A}} \\mathrm{=} \\mathrm{0}"
+              }
             </Equation>
           </div>
           <div
@@ -67,14 +73,17 @@ function MaxwellsEquations() {
               backgroundColor: "rgba(200, 200, 200, 0.5)",
               border: "1px solid black",
               justifyContent: "center",
-              alignContent: "center",
+              display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
             }}
           >
             <h2 style={{ textAlign: "center" }}>Faraday's Law</h2>
             <Equation id="equation3" number={3}>
-              {"\\theta_i = \\theta_r"}
+              {
+                "\\oint \\vec{\\mathrm{E}} \\cdot \\mathrm{d} \\vec{\\mathrm{l}} \\mathrm{=} \\mathrm{-} \\frac{\\mathrm{d} \\mathrm{\\Phi}_\\mathrm{B}}{\\mathrm{dt}}"
+              }
             </Equation>
           </div>
           <div
@@ -82,14 +91,17 @@ function MaxwellsEquations() {
               backgroundColor: "rgba(255, 255, 255, 0.5)",
               border: "1px solid black",
               justifyContent: "center",
-              alignContent: "center",
+              display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
             }}
           >
             <h2 style={{ textAlign: "center" }}>Ampère-Maxwell Law</h2>
             <Equation id="equation4" number={4}>
-              {"\\theta_i = \\theta_r"}
+              {
+                "\\oint \\vec{\\mathrm{B}} \\cdot \\mathrm{d} \\vec{\\mathrm{l}} \\mathrm{=} \\mathrm{\\mu}_\\mathrm{0} (\\mathrm{i}_\\mathrm{C} + \\mathrm{\\epsilon}_\\mathrm{0} \\frac{\\mathrm{d} \\mathrm{\\Phi}_\\mathrm{E}}{\\mathrm{dt}})_\\mathrm{encl}"
+              }
             </Equation>
           </div>
         </div>
