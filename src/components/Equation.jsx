@@ -10,7 +10,7 @@ function Equation({ children, number, id }) {
         display: "grid",
         gridTemplateColumns: "1fr auto",
         alignItems: "center",
-        width: "100%",
+        width: "80%",
       }}
     >
       <BlockMath style={{ justifySelf: "center" }}>{children}</BlockMath>

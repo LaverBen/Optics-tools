@@ -21,6 +21,7 @@ const NAV_ITEMS = [
       },
     ],
   },
+  { path: '/maxwells-equations', label: 'Maxwells Equations' },
 ];
 
 export default NAV_ITEMS;

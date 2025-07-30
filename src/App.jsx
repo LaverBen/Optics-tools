@@ -5,6 +5,7 @@ import Reflection from "./pages/Reflection/Reflection";
 import Mirrors from "./pages/Reflection/Mirrors/Mirrors";
 import ConcaveMirrors from "./pages/Reflection/Mirrors/ConcaveMirrors";
 import ConvexMirrors from "./pages/Reflection/Mirrors/ConvexMirrors";
+import MaxwellsEquations from "./pages/MaxwellsEquations";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           path="reflection/mirrors/convex-mirrors"
           element={<ConvexMirrors />}
         />
+        <Route path="maxwells-equations" element={<MaxwellsEquations />} />
       </Route>
     </Routes>
   );

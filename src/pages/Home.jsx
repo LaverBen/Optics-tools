@@ -43,7 +43,10 @@ function Home() {
             key={b.path}
             to={b.path}
             className="brick"
-            style={{ backgroundColor: b.bg, color: b.color }}
+            style={{
+              backgroundColor: b.bg,
+              color: b.color,
+            }}
           >
             {b.label}
           </Link>
